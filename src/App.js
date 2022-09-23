@@ -1,10 +1,8 @@
 import Layout from "./Layout";
-
 function App() {
   return (
-    <div>
+    <div className= "conteudo">
       <Layout/>
-      <p>oi poura</p>
     </div>
   );
 }

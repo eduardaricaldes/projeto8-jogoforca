@@ -1,5 +1,4 @@
 export default function JogoPalavra(props) {
-  console.log(props.indices)
   return(
     <div className="jogoPalavra">
       {props.palavraEmArray.map((letra, index) => {
