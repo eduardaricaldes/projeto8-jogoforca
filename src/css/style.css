@@ -1,0 +1,25 @@
+body{
+
+}
+
+
+button{
+  width: 70px;
+  margin-left: 14px;
+  margin-bottom: 14px;
+  background-color:#FFFF99;
+  border-radius: 20px;
+  border:none;
+  padding: 10px 10px 10px 10px; 
+}
+
+.buttons-letters{
+}
+.letra {
+ font-size: 28px;
+}
+.jogoPalavra{
+  margin-left: 680px;
+  margin-bottom: 80px;
+}
+
