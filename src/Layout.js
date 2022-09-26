@@ -7,14 +7,20 @@ import buscarIndices from './funcoes/buscar-indices';
 import palavras from './palavras';
 import Corpo from './Corpo';
 import Chutar from './Chutar';
+import ReiniciarJogo from "./reiniciarjogo";
+import obterTodosOsIndices from "./funcoes/retornar-indices";
 
 export default function Layout (){
   const [palavra, setPalavra] = useState([]);
   const [indicesPalavraSelecionada, setIndices] = useState([])
   const [partesDoCorpo, setParteDoCorpo] = useState(0)
+  const [palavraDoJogo, setPalavraDoJogo] = useState("")
+  const [chutouCerto, setChutouCerto] = useState(false)
 
   useEffect(() => {
     const palavraRandomica = obterPalavra(palavras);
+    console.log (palavraRandomica)
+    setPalavraDoJogo(palavraRandomica)
     const palavraQuebrada = quebrarPalavra(palavraRandomica);
     setPalavra(palavraQuebrada)
   }, [])
@@ -33,13 +39,24 @@ export default function Layout (){
     }
   }
 
+  function chutarPalavra(palavraRecebida){
+    if(palavraRecebida===palavraDoJogo){
+      const indices= obterTodosOsIndices(palavra);
+      setChutouCerto(true)
+      setIndices(indices);
+    }else {
+      setParteDoCorpo(6);
+    }
+  }
+
 
   return (
     <div>
+      <ReiniciarJogo/>
       <Corpo partesDoCorpo={partesDoCorpo}/>
-      <JogoPalavra palavraEmArray={palavra} indices={indicesPalavraSelecionada}/>
+      <JogoPalavra palavraEmArray={palavra} chutouCerto={chutouCerto} indices={indicesPalavraSelecionada}/>
       <ButtonsLetters selecionarLetra={selecionarLetra}/>
-      <Chutar/>
+      <Chutar chutarPalavra={chutarPalavra}/>
     </div>
   )
 
